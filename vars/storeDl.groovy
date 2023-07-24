@@ -4,8 +4,10 @@ def call(String userEmail) {
         distributionList.add(userEmail)
         saveDistributionList(distributionList)
         echo "User ${userEmail} added to the distribution list."
+        return true
     } else {
         echo "User ${userEmail} is already in the distribution list."
+        return false
     }
 }
 
