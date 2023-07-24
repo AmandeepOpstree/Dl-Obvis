@@ -1,7 +1,5 @@
 def call(String userEmail) {
     def distributionList = loadDistributionList()
-    echo "Current Distribution List: ${distributionList}"
-    
     if (!distributionList.contains(userEmail)) {
         distributionList.add(userEmail)
         saveDistributionList(distributionList)
@@ -9,20 +7,16 @@ def call(String userEmail) {
     } else {
         echo "User ${userEmail} is already in the distribution list."
     }
-
-    echo "Updated Distribution List: ${loadDistributionList()}"
 }
 
 def loadDistributionList() {
-    def distributionList = env.DL_EMAIL_SECRET
-    if (!distributionList) {
-        distributionList = []
-    } else {
-        distributionList = distributionList.tokenize(',')
+    try {
+        return readFile(env.WORKSPACE + '/distribution_list.txt').readLines() ?: []
+    } catch (FileNotFoundException e) {
+        return []
     }
-    return distributionList
 }
 
 def saveDistributionList(List distributionList) {
-    env.DL_EMAIL_SECRET = distributionList.join(',')
+    writeFile(file: env.WORKSPACE + '/distribution_list.txt', text: distributionList.join('\n'))
 }
