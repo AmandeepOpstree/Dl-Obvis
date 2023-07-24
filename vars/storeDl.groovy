@@ -15,4 +15,6 @@ def loadDistributionList() {
 
 def saveDistributionList(List distributionList) {
     env.DL_EMAIL_SECRET = distributionList.join(',')
+    echo "DL_EMAIL_SECRET value after saving: ${env.DL_EMAIL_SECRET}"
 }
+
