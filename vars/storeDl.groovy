@@ -8,6 +8,7 @@ def call(String userEmail) {
     } else {
         echo "User ${userEmail} is already in the distribution list."
     }
+    echo "Updated Distribution List: ${loadDistributionList()}"
 }
 
 def loadDistributionList() {
@@ -16,5 +17,4 @@ def loadDistributionList() {
 
 def saveDistributionList(List distributionList) {
     env.DL_EMAIL_SECRET = distributionList.join(',')
-    echo "DL_EMAIL_SECRET value after saving: ${env.DL_EMAIL_SECRET}"
 }
