@@ -1,3 +1,4 @@
-def call(List distributionList) {
-    return distributionList
+def call(List<String> distributionList) {
+    def updatedDistributionList = distributionList ?: []
+    return updatedDistributionList
 }
