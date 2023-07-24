@@ -14,5 +14,9 @@ def loadDistributionList() {
 }
 
 def saveDistributionList(List distributionList) {
-    env.DISTRIBUTION_LIST = distributionList.join(',')
+    String distributionListStr = distributionList.join(',')
+    // Use Jenkins API to set the global property value
+    Jenkins.instance.getGlobalNodeProperties().add(new hudson.model.EnvironmentVariablesNodeProperty(
+        [new hudson.model.EnvironmentVariablesNodeProperty.Entry("DISTRIBUTION_LIST", distributionListStr)]
+    ))
 }
