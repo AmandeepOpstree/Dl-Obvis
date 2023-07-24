@@ -10,7 +10,7 @@ def call(String userEmail) {
 }
 
 def loadDistributionList() {
-    return env.DL_EMAIL_SECRET ? env.DL_EMAIL_SECRET.split(',') : []
+    return env.DL_EMAIL_SECRET ? env.DL_EMAIL_SECRET.split(',') as List : []
 }
 
 def saveDistributionList(List distributionList) {
