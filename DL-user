@@ -7,13 +7,13 @@ pipeline {
         string(name: 'USER_EMAIL', defaultValue: '', description: 'Enter the user email to add to the distribution list')
     }
     stages {
-        // stage('Create distribution_list.txt') {
-        //     steps {
-        //         script {
-        //             writeFile file: "${workspace}/distribution_list.txt", text: ''
-        //         }
-        //     }
-        // }
+        stage('Create distribution_list.txt') {
+            steps {
+                script {
+                    writeFile file: "${workspace}/distribution_list.txt", text: ''
+                }
+            }
+        }
         stage('Check User Existence in Distribution List') {
             steps {
                 script {
