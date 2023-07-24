@@ -10,13 +10,9 @@ def call(String userEmail) {
 }
 
 def loadDistributionList() {
-    return env.DISTRIBUTION_LIST ? env.DISTRIBUTION_LIST.split(',') : []
+    return env.DL_EMAIL_SECRET ? env.DL_EMAIL_SECRET.split(',') : []
 }
 
 def saveDistributionList(List distributionList) {
-    String distributionListStr = distributionList.join(',')
-    // Use Jenkins API to set the global property value
-    Jenkins.instance.getGlobalNodeProperties().add(new hudson.model.EnvironmentVariablesNodeProperty(
-        [new hudson.model.EnvironmentVariablesNodeProperty.Entry("DISTRIBUTION_LIST", distributionListStr)]
-    ))
+    env.DL_EMAIL_SECRET = distributionList.join(',')
 }
