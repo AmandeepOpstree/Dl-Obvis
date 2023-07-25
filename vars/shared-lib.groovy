@@ -6,7 +6,6 @@ import com.synopsys.arc.jenkins.plugins.rolestrategy.RoleType
 import hudson.security.Permission
 import jenkins.model.Jenkins
 
-@NonCPS
 def configureRole(String roleType, String roleName, List<String> roleUsers) {
     // Define the default permission
     def DEFAULT_PERMISSION = hudson.security.Permission.READ
