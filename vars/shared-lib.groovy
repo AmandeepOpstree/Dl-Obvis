@@ -1,11 +1,3 @@
-import com.michelin.cio.hudson.plugins.rolestrategy.AuthorizationType
-import com.michelin.cio.hudson.plugins.rolestrategy.PermissionEntry
-import com.michelin.cio.hudson.plugins.rolestrategy.RoleBasedAuthorizationStrategy
-import com.michelin.cio.hudson.plugins.rolestrategy.Role
-import com.synopsys.arc.jenkins.plugins.rolestrategy.RoleType
-import hudson.security.Permission
-import jenkins.model.Jenkins
-
 def configureRole(String roleType, String roleName, List<String> roleUsers) {
     // Define the default permission
     def DEFAULT_PERMISSION = hudson.security.Permission.READ
